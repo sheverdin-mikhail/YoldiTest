@@ -1,0 +1,31 @@
+
+
+:root {
+
+    // colors
+    --bg-primary-color: #FFFFFF;
+    --bg-secondary-color: #F3F3F3;
+    --text-color: #000000;
+    --text-inverted-color: #FFFFFF;
+    --strokes-primary-color: #D4D4D4;
+    --strokes-secondary-color: #E6E6E6;
+    --error-color: #F00000;
+
+    --black-color: #000000;
+    --gray-color: #838383;
+
+
+    // sizes
+    --header-height: 80px;
+
+
+    // fonts
+    --font-family-main: "Inter", "sans-serif";
+
+    --font-title: 500 30px / 140% var(--font-family-main);
+    --font-subtitle: 400 18px / 140% var(--font-family-main);
+    --font-paragraph: 400 16px / 25.6px var(--font-family-main);
+    --font-button: 500 16px / 140% var(--font-family-main);
+    --font-paragraph-mini: 400 12px / 160% var(--font-family-main);
+
+}

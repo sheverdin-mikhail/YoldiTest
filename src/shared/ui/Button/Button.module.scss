@@ -1,0 +1,25 @@
+.button {
+    font: var(--font-button);
+    padding: 7px 33px;
+    border-radius: 5px;
+    &:disabled {
+        background: var(--strokes-primary, #D4D4D4);
+    }
+}
+
+.primary {
+    background: var(--black-color, #000); 
+    color: var(--text-inverted-color);
+    &:focus {
+        border: 1px solid var(--gray-color, #838383); 
+    }
+}
+
+.secondary {
+    border: 1px solid var(--strokes-primary, #D4D4D4);
+    background: var(--background-primary, #FFF);
+    &:hover,
+    &:focus {
+        border: 1px solid var(--gray, #838383); 
+    }
+}

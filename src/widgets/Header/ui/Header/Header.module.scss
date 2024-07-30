@@ -1,0 +1,14 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: var(--header-height);
+    padding: 0 20px;
+    border-bottom: 1px solid var(--strokes-secondady, #E6E6E6);
+    background: var(--background-primary, #FFF);
+}
+
+.row {
+    display: flex;
+    gap: 20px;
+}
