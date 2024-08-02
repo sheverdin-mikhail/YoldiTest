@@ -1,5 +1,5 @@
 {
-  "name": "yold_test",
+  "name": "yoldi_test",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -18,7 +18,8 @@
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18",
-    "@typescript-eslint/eslint-plugin": "^8.0.0",
+    "@typescript-eslint/eslint-plugin": "^7.2.0",
+    "@typescript-eslint/parser": "^7.2.0",
     "babel-plugin-inline-react-svg": "^2.0.2",
     "eslint": "^8",
     "eslint-config-next": "14.2.5",
