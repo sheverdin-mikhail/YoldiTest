@@ -1,6 +1,7 @@
-import clsx from 'clsx';
-import cls from './Container.module.scss';
-import { ReactElement } from 'react';
+import clsx from 'clsx'
+import { ReactElement } from 'react'
+import cls from './Container.module.scss'
+
 
 interface ContainerProps {
     className?: string;
@@ -8,11 +9,11 @@ interface ContainerProps {
 }
 
 export const Container: React.FC<ContainerProps> = (props) => {
-    const { className, children } = props;
+	const { className, children } = props
 
-    return (
-        <div className={clsx(cls.container, {}, [className])}>
-            {children}
-        </div>
-    );
+	return (
+		<div className={clsx(cls.container, {}, [ className ])}>
+			{children}
+		</div>
+	)
 }

@@ -1,3 +1,4 @@
-import { AccountsListPage } from "./ui/AccountsListPage/AccountsListPage";
+import { AccountsListPage } from './ui/AccountsListPage/AccountsListPage'
 
-export default AccountsListPage;
+
+export default AccountsListPage

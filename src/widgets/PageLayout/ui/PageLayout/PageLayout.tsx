@@ -1,10 +1,11 @@
-import clsx from 'clsx';
-import cls from './PageLayout.module.scss';
-import { ReactNode } from 'react';
-import { Header } from '@/widgets/Header';
+import clsx from 'clsx'
+import { ReactNode } from 'react'
 import { Inter } from 'next/font/google'
- 
-const inter = Inter({ subsets: ['latin'] })
+import { Header } from '@/widgets/Header'
+import cls from './PageLayout.module.scss'
+
+
+const inter = Inter({ subsets: [ 'latin' ] })
 
 interface PageLayoutProps {
     className?: string
@@ -12,15 +13,15 @@ interface PageLayoutProps {
 }
 
 export const PageLayout: React.FC<PageLayoutProps> = (props) => {
-    const { className, children } = props
+	const { className, children } = props
 
-    return (
+	return (
 
-        <div className={cls.layout}>
-            <Header className={inter.className}/>
-            <main className={clsx(cls.mainContent, {}, [className, inter.className])}>
-                {children}
-            </main>
-        </div>
-    );
+		<div className={cls.layout}>
+			<Header className={inter.className} />
+			<main className={clsx(cls.mainContent, {}, [ className, inter.className ])}>
+				{children}
+			</main>
+		</div>
+	)
 }

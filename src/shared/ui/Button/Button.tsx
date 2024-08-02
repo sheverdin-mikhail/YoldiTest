@@ -1,6 +1,7 @@
-import clsx from 'clsx';
-import cls from './Button.module.scss';
-import { ButtonHTMLAttributes } from 'react';
+import clsx from 'clsx'
+import { ButtonHTMLAttributes } from 'react'
+import cls from './Button.module.scss'
+
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string
@@ -13,11 +14,11 @@ export enum ButtonTheme {
 }
 
 export const Button: React.FC<ButtonProps> = (props) => {
-    const { className, theme = ButtonTheme.PRIMARY, children, onClick, ...otherProps } = props;
+	const { className, theme = ButtonTheme.PRIMARY, children, onClick, ...otherProps } = props
 
-    return (
-        <button className={clsx(cls.button, {}, [cls[theme], className])} {...otherProps}>
-            {children}
-        </button>
-    );
+	return (
+		<button className={clsx(cls.button, {}, [ cls[theme], className ])} {...otherProps}>
+			{children}
+		</button>
+	)
 }
