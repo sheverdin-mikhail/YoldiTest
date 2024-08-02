@@ -2,8 +2,8 @@ import clsx from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
 import LogoIcon from '@/shared/assets/img/icons/logo-icon.svg'
-import { Button, ButtonTheme } from '@/shared/ui/Button/Button'
 import { Text } from '@/shared/ui/Text/Text'
+import { CustomLink, LinkTheme } from '@/shared/ui/CustomLink/CustomLink'
 import cls from './Header.module.scss'
 
 
@@ -22,9 +22,9 @@ export const Header: React.FC<HeaderProps> = (props) => {
 				</Link>
 				<Text paragraph>Разрабатываем и запускаем <br /> сложные веб проекты</Text>
 			</div>
-			<Button theme={ButtonTheme.SECONDARY}>
+			<CustomLink href="/login" theme={LinkTheme.BUTTON}>
                 Войти
-			</Button>
+			</CustomLink>
 		</header>
 	)
 }

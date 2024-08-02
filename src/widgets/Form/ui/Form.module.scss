@@ -1,0 +1,22 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background: var(--background-secondary-color, #F3F3F3);
+}
+
+.formContent {
+    display: flex;
+    flex-direction: column;
+    width: var(--form-width);
+    padding: 30px;
+    border-radius: 5px;
+    border: 1px solid var(--strokes-secondady-color, #E6E6E6);
+    background: var(--background-primary-color, #FFF);
+}
+
+.title {
+    margin-bottom: 25px;
+}

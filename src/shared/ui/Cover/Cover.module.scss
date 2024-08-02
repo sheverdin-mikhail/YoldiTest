@@ -1,0 +1,9 @@
+.cover {
+    background: var(--background-secondary-color);
+}
+
+.image {
+    width: 100%;   
+    height: 100%;
+    object-fit: cover;
+}

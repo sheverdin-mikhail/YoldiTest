@@ -1,0 +1,24 @@
+.avatar {
+    position: absolute;
+    top: 0;
+    transform: translateY(-50%);
+}
+
+.container {
+    position: relative;
+    padding-top: 85px;
+}
+
+
+.email {
+    color: var(--gray-color);
+    margin-bottom: 30px;
+}
+
+.nameRow {
+    margin-bottom: 10px;
+}
+
+.accountDetailPage {
+    margin-bottom: 50px;
+}

@@ -1,0 +1,17 @@
+.customLink {
+    font: var(--font-button);
+    text-decoration: none;
+}
+
+.button {
+    padding: 7px 33px;
+    border-radius: 5px;
+    border: 1px solid var(--strokes-primary-color, #D4D4D4);
+    background: var(--background-primary-color, #FFF);
+}
+
+.text {
+    &:hover {
+        text-decoration: underline;
+    }
+}

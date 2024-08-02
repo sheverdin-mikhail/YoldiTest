@@ -1,11 +1,11 @@
 import clsx from 'clsx'
-import { ReactElement } from 'react'
+import { ReactElement, ReactNode } from 'react'
 import cls from './Container.module.scss'
 
 
 interface ContainerProps {
     className?: string;
-    children: ReactElement;
+    children: ReactNode;
 }
 
 export const Container: React.FC<ContainerProps> = (props) => {

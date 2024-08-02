@@ -1,0 +1,40 @@
+.accountsListItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-top: 1px solid var(--strokes-secondary-color);
+    &:last-child {
+        border-bottom: 1px solid var(--strokes-secondary-color);
+    }
+    cursor: pointer;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    max-width: 48%;
+    flex-grow: 1;
+    
+}
+.email {
+    color: var(--gray-color);
+    font: var(--font-paragraph);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 48%;
+}
+.name {
+    font: var(--font-button);
+    color: var(--text-color);
+    overflow-x: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 75%;
+}
+
+.avatar {
+    position: relative;
+}

@@ -1,13 +1,13 @@
 .button {
     font: var(--font-button);
-    padding: 7px 33px;
     border-radius: 5px;
     &:disabled {
-        background: var(--strokes-primary, #D4D4D4);
+        background: var(--strokes-primary-color, #D4D4D4);
     }
 }
 
 .primary {
+    padding: 12px 33px;
     background: var(--black-color, #000); 
     color: var(--text-inverted-color);
     &:focus {
@@ -16,10 +16,11 @@
 }
 
 .secondary {
-    border: 1px solid var(--strokes-primary, #D4D4D4);
-    background: var(--background-primary, #FFF);
+    padding: 7px 33px;
+    border: 1px solid var(--strokes-primary-color, #D4D4D4);
+    background: var(--background-primary-color, #FFF);
     &:hover,
     &:focus {
-        border: 1px solid var(--gray, #838383); 
+        border: 1px solid var(--gray-color, #838383); 
     }
 }
