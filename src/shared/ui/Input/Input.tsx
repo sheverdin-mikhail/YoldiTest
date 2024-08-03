@@ -1,9 +1,11 @@
 'use client'
+
 import clsx from 'clsx'
-import { Input as AInput, InputProps } from 'antd'
+import { Input as AInput, InputProps, InputRef } from 'antd'
 import Password from 'antd/es/input/Password'
 import Image from 'next/image'
-import { ChangeEventHandler, useCallback, useMemo, useState } from 'react'
+import { useCallback, useState, forwardRef } from 'react'
+import TextArea from 'antd/es/input/TextArea'
 import EyeIcon from '@/shared/assets/img/icons/eye-solid-icon.svg'
 import EyeSlashIcon from '@/shared/assets/img/icons/eye-slash-icon.svg'
 import LockIcon from '@/shared/assets/img/icons/lock-solid-icon.svg'
@@ -12,47 +14,54 @@ import UserIcon from '@/shared/assets/img/icons/user-icon.svg'
 import cls from './Input.module.scss'
 
 
-interface MyInputProps extends InputProps{
-    className?: string;
-    name?: InputName | string;
+interface MyInputProps {
+  className?: string;
+  name?: InputName | string;
+  hasPreffix?: boolean
+  isError?: boolean;
+  type: string;
 }
 
 export enum InputName {
-    NAME = 'name',
-    EMAIL = 'email',
-    PASSWORD = 'password',
+  NAME = 'name',
+  EMAIL = 'email',
+  PASSWORD = 'password',
 }
 
 const InputIcon: Record<string, any> = {
 	[InputName.NAME]: UserIcon,
 	[InputName.PASSWORD]: LockIcon,
 	[InputName.EMAIL]: EnvelopeIcon,
-
 }
 
-export const Input: React.FC<MyInputProps> = (props) => {
-	const { className, type, name = '', ...otherProps } = props
+const InputComponent = forwardRef<InputRef, MyInputProps>((props, ref) => {
+	const { className, type, name = '', hasPreffix, isError, ...otherProps } = props
 	const [ isVisible, setisVisible ] = useState(false)
-	const eyeIconRender = useCallback((visible: boolean) => (visible ? (
-		<Image
-			src={EyeSlashIcon}
-			alt="eye"
-			className={cls.eyeIcon}
-		/>
-	) : (
-		<Image
-			src={EyeIcon}
-			alt="eye"
-			className={cls.eyeIcon}
-		/>
-	)), [])
+	const eyeIconRender = useCallback(
+		(visible: boolean) =>
+			visible ? (
+				<Image
+					src={EyeSlashIcon}
+					alt="eye"
+					className={cls.eyeIcon}
+				/>
+			) : (
+				<Image
+					src={EyeIcon}
+					alt="eye"
+					className={cls.eyeIcon}
+				/>
+			),
+		[]
+	)
 
-
-	if (type === 'password' ) {
+	if (type === 'password') {
 		return (
 			<Password
+				ref={ref}
+				status={isError ? 'error' : undefined}
 				prefix={
-					name ? (
+					name && hasPreffix ? (
 						<Image
 							src={InputIcon[InputName.PASSWORD]}
 							alt={InputName.PASSWORD}
@@ -68,11 +77,28 @@ export const Input: React.FC<MyInputProps> = (props) => {
 		)
 	}
 
+	if (name === 'description') {
+		return (
+			<TextArea
+				className={cls.textArea}
+				rows={5}
+				style={
+					{
+						resize: 'none',
+					}
+				}
+				{...otherProps}
+			/>
+		)
+	}
+
 	return (
 		<AInput
+			ref={ref}
 			className={clsx(cls.input, className)}
+			status={isError ? 'error' : undefined}
 			prefix={
-				InputIcon[name] ? (
+				hasPreffix && InputIcon[name] ? (
 					<Image
 						src={InputIcon[name]}
 						alt={name}
@@ -83,4 +109,6 @@ export const Input: React.FC<MyInputProps> = (props) => {
 			{...otherProps}
 		/>
 	)
-}
+})
+
+export { InputComponent as Input }

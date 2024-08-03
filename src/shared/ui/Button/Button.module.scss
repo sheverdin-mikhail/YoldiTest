@@ -7,20 +7,28 @@
 }
 
 .primary {
-    padding: 12px 33px;
     background: var(--black-color, #000); 
     color: var(--text-inverted-color);
     &:focus {
         border: 1px solid var(--gray-color, #838383); 
     }
+    &.lg, &.sm {
+        padding: 12px 33px;
+    }
 }
 
 .secondary {
-    padding: 7px 33px;
     border: 1px solid var(--strokes-primary-color, #D4D4D4);
     background: var(--background-primary-color, #FFF);
     &:hover,
     &:focus {
         border: 1px solid var(--gray-color, #838383); 
+    }
+    &.lg {
+        padding: 7px 33px;
+    }
+
+    &.sm {
+        padding: 7px 22px;
     }
 }

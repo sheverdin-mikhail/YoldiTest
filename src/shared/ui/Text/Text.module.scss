@@ -5,3 +5,7 @@
 .paragraph {
     font: var(--font-paragraph);
 }
+
+.title, .paragraph {
+    text-decoration: none;
+}

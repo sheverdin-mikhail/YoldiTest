@@ -4,10 +4,15 @@ import '../styles/root.scss'
 import Head from 'next/head'
 import { AntdRegistry } from '@ant-design/nextjs-registry'
 import { PageLayout } from '@/widgets/PageLayout'
+import { AccountProvider } from '@/entities/account'
 import { AntdConfigProvider } from '../providers/AntdConfigProvider/AntdConfigProvider'
 
 
-const inter = Inter({ subsets: [ 'latin' ] })
+const inter = Inter({
+	subsets: [ 'latin' ],
+	weight: [ '400', '500' ],
+	variable: '--font-family-main',
+})
 
 export const metadata: Metadata = {
 	title: 'Yoldi Test App',
@@ -16,7 +21,7 @@ export const metadata: Metadata = {
 
 export function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
-		<html lang="en">
+		<html lang="en" className={`${inter.variable} font-sans`}>
 			<Head>
 				<title key="title">Yold test task</title>
 				<meta
@@ -25,15 +30,17 @@ export function RootLayout({ children }: { children: React.ReactNode }) {
 					content="Yold test task application"
 				/>
 				<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-				<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet" />
 			</Head>
 
-			<body className={inter.className}>
+			<body>
 				<AntdRegistry>
 					<AntdConfigProvider>
-						<PageLayout>
-							{children}
-						</PageLayout>
+						<AccountProvider>
+							<PageLayout>
+								{children}
+							</PageLayout>
+							<div id="app-modals" />
+						</AccountProvider>
 					</AntdConfigProvider>
 				</AntdRegistry>
 			</body>

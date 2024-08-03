@@ -1,0 +1,42 @@
+.avatar {
+    position: absolute;
+    top: 0;
+    transform: translateY(-50%);
+}
+
+.container {
+    position: relative;
+    padding-top: 85px;
+}
+
+
+.email {
+    color: var(--gray-color);
+}
+
+.nameRow {
+    margin-bottom: 10px;
+}
+
+.profilePage {
+    margin-bottom: 50px;
+}
+
+.icon {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+}
+
+.exit {
+    margin-top: 60px;
+}
+
+.button {
+    display: flex;
+    align-items: center;
+}
+
+.title {
+    margin-bottom: 10px;
+}

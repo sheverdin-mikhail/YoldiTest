@@ -25,11 +25,12 @@
   "rules": {
     // NextJS
 
+    "@next/next/no-page-custom-font": "off",
     "@next/next/no-sync-scripts": "off",
     "@next/next/no-css-tags": "off",
     "@next/next/no-img-element": "off",
     // Common
-
+    "no-console": ["warn", { "allow": ["warn", "error"] }],
     "padding-line-between-statements": [
       "error",
       {

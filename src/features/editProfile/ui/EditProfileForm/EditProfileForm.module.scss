@@ -1,0 +1,10 @@
+.editProfileForm {
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.button {
+    flex: 0 1 50%;
+}

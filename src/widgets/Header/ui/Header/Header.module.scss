@@ -12,3 +12,15 @@
     display: flex;
     gap: 20px;
 }
+
+.avatar {
+    position: relative;
+}
+
+.link {
+    text-decoration: none;
+}
+
+.skeleton {
+    max-width: 155px;
+}
