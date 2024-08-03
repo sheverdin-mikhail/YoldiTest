@@ -20,6 +20,7 @@
 .secondary {
     border: 1px solid var(--strokes-primary-color, #D4D4D4);
     background: var(--background-primary-color, #FFF);
+    color: var(--text-color);
     &:hover,
     &:focus {
         border: 1px solid var(--gray-color, #838383); 
