@@ -4,6 +4,7 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 import { useRouter } from 'next/navigation'
+import { useState } from 'react'
 import { InputRow } from '@/shared/ui/InputRow/InputRow'
 import { Button } from '@/shared/ui/Button/Button'
 import { Form } from '@/widgets/Form'
@@ -30,12 +31,13 @@ export const LoginForm: React.FC<LoginFormProps> = (props) => {
 	const router = useRouter()
 	const { mutate } = useSWRConfig()
 	const { setToken, setIsAuth } = useAccount()
+	const [ isLoading, setIsLoading ] = useState(false)
 
 	const {
 		handleSubmit,
 		setError,
 		control,
-		formState: { errors },
+		formState: { errors, isValid },
 	  } = useForm<LoginFormFields>(
 		{
 			mode: 'onBlur',
@@ -43,7 +45,8 @@ export const LoginForm: React.FC<LoginFormProps> = (props) => {
 		}
 	)
 
-	  const onSubmitHandler: SubmitHandler<LoginFormFields> = (data) => {
+	  const onSubmitHandler: SubmitHandler<LoginFormFields> = async (data) => {
+		setIsLoading(true)
 		mutate('/api/accounts', logIn(data))
 			.then((value) => {
 				if (value) {
@@ -60,6 +63,7 @@ export const LoginForm: React.FC<LoginFormProps> = (props) => {
 					})
 				}
 			})
+			.then(() => setIsLoading(false))
 	  }
 
 
@@ -80,7 +84,7 @@ export const LoginForm: React.FC<LoginFormProps> = (props) => {
 					type="password"
 				/>
 			</div>
-			<Button>Войти</Button>
+			<Button disabled={!isValid || isLoading}>Войти</Button>
 			<Text className={cls.error} paragraph>{errors.root?.message}</Text>
 		</Form>
 	)

@@ -31,6 +31,7 @@ export const EditProfileForm: React.FC<EditProfileFormProps> = (props) => {
 
 	const {
 		handleSubmit,
+		setError,
 		control,
 		formState: { errors },
 	  } = useForm<EditProfileFormFields>(
@@ -51,7 +52,13 @@ export const EditProfileForm: React.FC<EditProfileFormProps> = (props) => {
 	)
 
 	  const onSubmitHandler: SubmitHandler<EditProfileFormFields> = (data) => {
-		mutate(editProfile(data)).then(() => onCancel?.())
+		mutate(editProfile(data))
+			.then(() => onCancel?.())
+			.catch(err => {
+				if (err.response.status === 409) {
+					setError('slug', { message: err.response.data.message })
+				}
+			})
 	  }
 
 	const onCancelHandler: MouseEventHandler<HTMLButtonElement> = (e) => {
@@ -77,7 +84,7 @@ export const EditProfileForm: React.FC<EditProfileFormProps> = (props) => {
 					label="Имя"
 				/>
 				<InputRow
-					error={errors.description}
+					error={errors.slug}
 					control={control}
 					name="slug"
 					placeholder="Адрес профиля"
@@ -91,7 +98,11 @@ export const EditProfileForm: React.FC<EditProfileFormProps> = (props) => {
 					label="Описание"
 				/>
 			</Flex>
-			<Flex justify="space-between" gap={10}>
+			<Flex
+				justify="space-between"
+				gap={10}
+				className={cls.buttons}
+			>
 				<Button
 					className={cls.button}
 					theme={ButtonTheme.SECONDARY}

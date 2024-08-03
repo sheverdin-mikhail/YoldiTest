@@ -11,6 +11,7 @@ import EyeSlashIcon from '@/shared/assets/img/icons/eye-slash-icon.svg'
 import LockIcon from '@/shared/assets/img/icons/lock-solid-icon.svg'
 import EnvelopeIcon from '@/shared/assets/img/icons/envelope-icon.svg'
 import UserIcon from '@/shared/assets/img/icons/user-icon.svg'
+import { useDevice } from '@/entities/device'
 import cls from './Input.module.scss'
 
 
@@ -37,6 +38,7 @@ const InputIcon: Record<string, any> = {
 const InputComponent = forwardRef<InputRef, MyInputProps>((props, ref) => {
 	const { className, type, name = '', hasPreffix, isError, ...otherProps } = props
 	const [ isVisible, setisVisible ] = useState(false)
+	const { isMobileView } = useDevice()
 	const eyeIconRender = useCallback(
 		(visible: boolean) =>
 			visible ? (
@@ -80,13 +82,30 @@ const InputComponent = forwardRef<InputRef, MyInputProps>((props, ref) => {
 	if (name === 'description') {
 		return (
 			<TextArea
+				ref={ref}
 				className={cls.textArea}
 				rows={5}
+				autoSize={
+					isMobileView && {
+						maxRows: 10,
+					}
+				}
 				style={
 					{
 						resize: 'none',
 					}
 				}
+				{...otherProps}
+			/>
+		)
+	}
+
+	if (name === 'slug') {
+		return (
+			<AInput
+				ref={ref}
+				className={cls.inputWithAddon}
+				addonBefore={<span className={cls.addon}>example.com</span>}
 				{...otherProps}
 			/>
 		)

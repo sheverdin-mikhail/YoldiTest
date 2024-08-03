@@ -1,10 +1,13 @@
+'use client'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import '../styles/root.scss'
 import Head from 'next/head'
 import { AntdRegistry } from '@ant-design/nextjs-registry'
+import { useEffect, useState } from 'react'
 import { PageLayout } from '@/widgets/PageLayout'
 import { AccountProvider } from '@/entities/account'
+import { DeviceProvider } from '@/entities/device'
 import { AntdConfigProvider } from '../providers/AntdConfigProvider/AntdConfigProvider'
 
 
@@ -20,6 +23,12 @@ export const metadata: Metadata = {
 }
 
 export function RootLayout({ children }: { children: React.ReactNode }) {
+	const [ userAgent, setUserAgent ] = useState<string | null>(null)
+
+	useEffect(() => {
+		setUserAgent(window.navigator.userAgent)
+	}, [])
+
 	return (
 		<html lang="en" className={`${inter.variable} font-sans`}>
 			<Head>
@@ -35,12 +44,14 @@ export function RootLayout({ children }: { children: React.ReactNode }) {
 			<body>
 				<AntdRegistry>
 					<AntdConfigProvider>
-						<AccountProvider>
-							<PageLayout>
-								{children}
-							</PageLayout>
-							<div id="app-modals" />
-						</AccountProvider>
+						<DeviceProvider userAgent={userAgent || ''}>
+							<AccountProvider>
+								<PageLayout>
+									{children}
+								</PageLayout>
+								<div id="app-modals" />
+							</AccountProvider>
+						</DeviceProvider>
 					</AntdConfigProvider>
 				</AntdRegistry>
 			</body>

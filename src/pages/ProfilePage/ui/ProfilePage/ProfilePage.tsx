@@ -13,6 +13,7 @@ import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button'
 import PenIcon from '@/shared/assets/img/icons/pen-solid.svg'
 import SignOutIcon from '@/shared/assets/img/icons/sign-out-alt-solid.svg'
 import { EditProfileModal } from '@/features/editProfile'
+import { useDevice } from '@/entities/device'
 import cls from './ProfilePage.module.scss'
 
 
@@ -20,6 +21,7 @@ export const ProfilePage: React.FC = () => {
 	const { account, signOut, isAuth, isLoading } = useAccount()
 	const router = useRouter()
 	const [ isOpen, setIsOpen ] = useState(false)
+	const { isMobileView } = useDevice()
 
 	const onClickExit = () => {
 		signOut?.()
@@ -50,11 +52,28 @@ export const ProfilePage: React.FC = () => {
 							vertical
 
 						>
-							<Text title>{account?.name}</Text>
-							<Flex gap={30} vertical>
+							<Flex gap={10} vertical>
+								<Text title>{account?.name}</Text>
 								<Text className={cls.email} paragraph>{account?.email}</Text>
-								<Text className={cls.description} paragraph>{account?.description}</Text>
+								{
+									isMobileView && (
+										<Button
+											size={ButtonSize.SMALL}
+											theme={ButtonTheme.SECONDARY}
+											className={cls.button}
+											onClick={() => setIsOpen(true)}
+										>
+											<Image
+												className={cls.icon}
+												src={PenIcon}
+												alt="pen"
+											/>
+											Редактировать
+										</Button>
+									)
+								}
 							</Flex>
+							<Text className={cls.description} paragraph>{account?.description}</Text>
 							<Button
 								size={ButtonSize.SMALL}
 								className={clsx(cls.exit, cls.button)}
@@ -69,19 +88,23 @@ export const ProfilePage: React.FC = () => {
 							Выйти
 							</Button>
 						</Flex>
-						<Button
-							size={ButtonSize.SMALL}
-							theme={ButtonTheme.SECONDARY}
-							className={cls.button}
-							onClick={() => setIsOpen(true)}
-						>
-							<Image
-								className={cls.icon}
-								src={PenIcon}
-								alt="pen"
-							/>
+						{
+							!isMobileView && (
+								<Button
+									size={ButtonSize.SMALL}
+									theme={ButtonTheme.SECONDARY}
+									className={cls.button}
+									onClick={() => setIsOpen(true)}
+								>
+									<Image
+										className={cls.icon}
+										src={PenIcon}
+										alt="pen"
+									/>
 							Редактировать
-						</Button>
+								</Button>
+							)
+						}
 					</Flex>
 				</Container>
 			</div>

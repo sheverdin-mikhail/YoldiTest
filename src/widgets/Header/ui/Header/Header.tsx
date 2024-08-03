@@ -26,7 +26,7 @@ export const Header: React.FC<HeaderProps> = (props) => {
 				<Link href="/">
 					<Image src={LogoIcon} alt="" />
 				</Link>
-				<Text paragraph>Разрабатываем и запускаем <br /> сложные веб проекты</Text>
+				<Text className={cls.text} paragraph>Разрабатываем и запускаем <br /> сложные веб проекты</Text>
 			</div>
 			{
 				isLoading

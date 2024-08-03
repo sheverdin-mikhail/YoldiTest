@@ -4,6 +4,7 @@ import { useSWRConfig } from 'swr'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 import { useRouter } from 'next/navigation'
+import { useState } from 'react'
 import { Form } from '@/widgets/Form'
 import { Button } from '@/shared/ui/Button/Button'
 import { InputRow } from '@/shared/ui/InputRow/InputRow'
@@ -30,12 +31,13 @@ export const RegisterForm: React.FC<RegisterFormProps> = (props) => {
 	const { mutate } = useSWRConfig()
 	const { setToken, setIsAuth } = useAccount()
 	const router = useRouter()
+	const [ isLoading, setIsLoading ] = useState(false)
 
 	const {
 		handleSubmit,
 		setError,
 		control,
-		formState: { errors },
+		formState: { errors, isValid },
 	  } = useForm<RegisterFormFields>(
 		{
 			mode: 'onBlur',
@@ -43,7 +45,8 @@ export const RegisterForm: React.FC<RegisterFormProps> = (props) => {
 		}
 	)
 
-	  const onSubmitHandler: SubmitHandler<RegisterFormFields> = (data) => {
+	  const onSubmitHandler: SubmitHandler<RegisterFormFields> = async (data) => {
+		setIsLoading(true)
 		mutate('/api/accounts', signUp(data))
 			.then(value => {
 				if (value) {
@@ -60,6 +63,7 @@ export const RegisterForm: React.FC<RegisterFormProps> = (props) => {
 					})
 				}
 			})
+			.then(() => setIsLoading(false))
 	  }
 
 
@@ -86,7 +90,7 @@ export const RegisterForm: React.FC<RegisterFormProps> = (props) => {
 					type="password"
 				/>
 			</div>
-			<Button>Создать аккаунт</Button>
+			<Button disabled={!isValid || isLoading}>Создать аккаунт</Button>
 		</Form>
 	)
 }

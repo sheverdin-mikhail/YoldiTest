@@ -24,3 +24,9 @@
 .skeleton {
     max-width: 155px;
 }
+
+.text {
+    @media screen and (max-width: 760px) {
+        display: none;
+    }
+}

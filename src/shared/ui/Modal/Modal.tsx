@@ -52,11 +52,13 @@ export const Modal: React.FC<ModalProps> = (props) => {
 
 		if (isOpen) {
 			window.addEventListener('keydown', onKeyDown)
+			document.body.style['overflow'] = 'hidden'
 		}
 
 		return () => {
 			clearTimeout(timerRef.current)
 			window.removeEventListener('keydown', onKeyDown)
+			document.body.style['overflow'] = 'auto'
 		}
 	}, [ isOpen, onKeyDown ])
 
