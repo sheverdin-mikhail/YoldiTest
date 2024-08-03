@@ -17,6 +17,7 @@
     @media screen and (max-width: 760px) {
         flex-direction: column ;
         align-items: flex-start;
+        max-width: 75%;
     }
 }
 .email {
@@ -39,6 +40,9 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     max-width: 75%;
+    @media screen and (max-width: 760px) {
+        max-width: 100%;
+    }
 }
 
 .avatar {

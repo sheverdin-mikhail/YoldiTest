@@ -84,6 +84,7 @@ const InputComponent = forwardRef<InputRef, MyInputProps>((props, ref) => {
 			<TextArea
 				ref={ref}
 				className={cls.textArea}
+				status={isError ? 'error' : undefined}
 				rows={5}
 				autoSize={
 					isMobileView && {
@@ -105,6 +106,7 @@ const InputComponent = forwardRef<InputRef, MyInputProps>((props, ref) => {
 			<AInput
 				ref={ref}
 				className={cls.inputWithAddon}
+				status={isError ? 'error' : undefined}
 				addonBefore={<span className={cls.addon}>example.com</span>}
 				{...otherProps}
 			/>

@@ -6,6 +6,13 @@
     padding: 0 20px;
     border-bottom: 1px solid var(--strokes-secondary-color, #E6E6E6);
     background: var(--background-primary-color, #FFF);
+    @media screen and (max-width: 760px) {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100svw;
+        z-index: 1000;
+    }
 }
 
 .row {

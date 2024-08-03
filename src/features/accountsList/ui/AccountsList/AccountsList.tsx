@@ -21,7 +21,7 @@ export const AccountsList: React.FC<AccountsListProps> = (props) => {
 			{
 				isLoading
 					? <AccountsListSkeleton />
-					: accountsList?.length && accountsList.map(account => (
+					: accountsList?.length && accountsList?.map(account => (
 						<AccountsListItem key={account.slug} item={account} />
 					))
 			}
