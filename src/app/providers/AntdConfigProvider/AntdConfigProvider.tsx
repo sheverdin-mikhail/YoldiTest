@@ -26,6 +26,8 @@ export const AntdConfigProvider: React.FC<AntdConfigProviderProps> = ({ children
 						inputFontSize: 16,
 						colorError: 'var(--error-color)',
 						addonBg: 'var(--background-secondary-color)',
+						boxShadow: 'none',
+						activeShadow: 'none',
 					},
 				},
 			}
