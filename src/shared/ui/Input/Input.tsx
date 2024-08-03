@@ -107,7 +107,7 @@ const InputComponent = forwardRef<InputRef, MyInputProps>((props, ref) => {
 				ref={ref}
 				className={cls.inputWithAddon}
 				status={isError ? 'error' : undefined}
-				addonBefore={<span className={cls.addon}>example.com</span>}
+				addonBefore={<span className={cls.addon}>example.com/</span>}
 				{...otherProps}
 			/>
 		)
