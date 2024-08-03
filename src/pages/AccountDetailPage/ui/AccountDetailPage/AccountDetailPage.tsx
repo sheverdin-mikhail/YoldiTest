@@ -3,6 +3,7 @@ import clsx from 'clsx'
 import { useParams } from 'next/navigation'
 import useSWR from 'swr'
 import { Flex } from 'antd'
+import { FC, ReactNode } from 'react'
 import { Cover } from '@/shared/ui/Cover/Cover'
 import { Container } from '@/shared/ui/Container/Container'
 import { Avatar, AvatarSize } from '@/shared/ui/Avatar/Avatar'
@@ -12,16 +13,15 @@ import cls from './AccountDetailPage.module.scss'
 
 
 interface AccountDetailPageProps {
-    className?: string;
+	params: { slug: string }
+	searchParams: { [key: string]: string | string[] | undefined }
 }
 
-export const AccountDetailPage: React.FC<AccountDetailPageProps> = (props) => {
-	const { className } = props
-	const params = useParams<{account_slug: string}>()
-	const { data: account } = useSWR(`/api/accounts/${params?.account_slug}/`, getAccountDetail(params!.account_slug))
+export const AccountDetailPage: FC<AccountDetailPageProps> = ({ params }) => {
+	const { data: account } = useSWR(`/api/accounts/${params?.slug}/`, getAccountDetail(params!.slug))
 
 	return (
-		<div className={clsx(cls.accountDetailPage, {}, [ className ])}>
+		<div className={clsx(cls.accountDetailPage)}>
 			<Cover image={account?.cover} />
 			<Container className={cls.container}>
 				<Avatar

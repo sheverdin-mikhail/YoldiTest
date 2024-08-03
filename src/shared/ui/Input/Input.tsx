@@ -14,7 +14,7 @@ import UserIcon from '@/shared/assets/img/icons/user-icon.svg'
 import cls from './Input.module.scss'
 
 
-interface MyInputProps {
+interface MyInputProps extends Record<string, any>{
   className?: string;
   name?: InputName | string;
   hasPreffix?: boolean

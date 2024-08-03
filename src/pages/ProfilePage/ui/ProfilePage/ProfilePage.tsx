@@ -16,12 +16,7 @@ import { EditProfileModal } from '@/features/editProfile'
 import cls from './ProfilePage.module.scss'
 
 
-interface ProfilePageProps {
-    className?: string;
-}
-
-export const ProfilePage: React.FC<ProfilePageProps> = (props) => {
-	const { className } = props
+export const ProfilePage: React.FC = () => {
 	const { account, signOut, isAuth, isLoading } = useAccount()
 	const router = useRouter()
 	const [ isOpen, setIsOpen ] = useState(false)
@@ -36,7 +31,7 @@ export const ProfilePage: React.FC<ProfilePageProps> = (props) => {
 
 	return (
 		<>
-			<div className={clsx(cls.profilePage, {}, [ className ])}>
+			<div className={clsx(cls.profilePage)}>
 				<Cover image={account?.cover} />
 				<Container className={cls.container}>
 					<Avatar
