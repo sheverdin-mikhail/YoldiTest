@@ -60,7 +60,9 @@ export const InputRow: React.FC<InputRowProps> = (props) => {
 					)
 				}
 			/>
-			<Text className={cls.error}> {error?.message} </Text>
+			{
+				error?.message && <Text className={cls.error}> {error?.message} </Text>
+			}
 		</Flex>
 	)
 }

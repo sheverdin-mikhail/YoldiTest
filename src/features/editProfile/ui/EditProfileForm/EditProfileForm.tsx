@@ -115,7 +115,9 @@ export const EditProfileForm: React.FC<EditProfileFormProps> = (props) => {
 				>Сохранить
 				</Button>
 			</Flex>
-			<Text className={cls.error} paragraph>{errors.root?.message}</Text>
+			{
+				errors.root && <Text className={cls.error} paragraph>{errors.root?.message}</Text>
+			}
 		</form>
 	)
 }
